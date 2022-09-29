@@ -3,7 +3,7 @@ import sys
 T = int(sys.stdin.readline())
 
 for _ in range(T):
-    a, b = map(int, input().split())
+    a, b = map(int, sys.stdin.readline().split())
     a = a % 10
 
     if a == 0:
@@ -15,10 +15,10 @@ for _ in range(T):
         if b == 1:
             print(a)
         else:
-            print((a*a) % 10)
+            print(a*a % 10)
     else:
         b = b % 4
         if b == 0:
             print((a**4) % 10)
         else:
-            print((a ** b) % 10)
+            print((a**b) % 10)
