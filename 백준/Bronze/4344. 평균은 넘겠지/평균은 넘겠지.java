@@ -26,7 +26,10 @@ public class Main{
                     ++cnt;
             }
             float ans = cnt / N * 100;
-            System.out.println(String.format("%.3f", ans) + "%");
+            bw.write(String.format("%.3f", ans) + "%\n");
         }
+        br.close();
+        bw.flush();
+        bw.close();
     }
 }
