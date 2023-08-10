@@ -1,2 +1,2 @@
-# BaekJoonHub
-This is a auto push repository for Baekjoon Online Judge created with [BaekjoonHub](https://github.com/BaekjoonHub/BaekjoonHub).
+# coding_tests
+This is a auto push repository of coding test data.
