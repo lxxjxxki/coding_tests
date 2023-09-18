@@ -1,29 +1,34 @@
-import java.util.HashSet;
+import java.util.Arrays;
+
 class Solution {
     public int solution(int n, int[] lost, int[] reserve) {
-        HashSet<Integer> lostSet = new HashSet<>();
-        HashSet<Integer> reserveSet = new HashSet<>();
+        int answer = n - lost.length;
+        Arrays.sort(lost);
+        Arrays.sort(reserve);
 
-        for (int i : reserve) {
-            reserveSet.add(i);
+        // 여벌 체육복을 가져온 학생이 도난당한 경우
+        for (int i = 0; i < lost.length; i++) {
+            for (int j = 0; j < reserve.length; j++) {
+                if (lost[i] == reserve[j]) {
+                    answer++;
+                    lost[i] = -1;
+                    reserve[i] = -1;
+                    break;
+                }
+            }
         }
-
-        for (int i : lost) {
-            //중복 확인
-            if (reserveSet.contains(i)) {
-                reserveSet.remove(i);
-            } else {
-                lostSet.add(i);
+        
+        // 도난당한 학생에게 빌려주는 경우
+        for (int i = 0; i < lost.length; i++) {
+            for (int j = 0; j < reserve.length; j++) {
+                if ((lost[i] - reserve.length == 1) || (lost[i] - reserve.length == -1)) {
+                    answer++;
+                    reserve[j] = -1;
+                    break;
+                }
             }
         }
 
-        for (int i : reserveSet) {
-            if (lostSet.contains(i - 1)) {
-                lostSet.remove(i - 1);
-            } else if (lostSet.contains(i + 1)) {
-                lostSet.remove(i + 1);
-            }
-        }
-        return n - lostSet.size();
+        return answer;
     }
 }
